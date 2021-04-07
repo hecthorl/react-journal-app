@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+   .btn-google {
+      @apply transition-colors duration-500 ease-in-out flex items-center w-full hover:bg-green-200 bg-green-500 p-1 rounded justify-center text-white hover:text-gray-900 focus:outline-none;
+   }
+
+   .btn-login {
+      @apply outline-none py-1 bg-green-500 transition-colors duration-500 ease-in-out rounded hover:bg-green-200 tracking-wider focus:outline-none;
+   }
+
+   .input {
+      @apply bg-green-100 shadow-lg h-10 p-2 rounded-md focus:outline-none border border-transparent focus:border-green-500;
+   }
+   .form-container {
+      @apply flex flex-col p-4 shadow-2xl bg-green-300;
+   }
+
+   .text-area {
+      @apply resize-none w-96 h-72 outline-none p-1 border-2 border-transparent focus:border-green-700 rounded shadow-2xl;
+   }
+   .entries-container {
+      @apply space-y-4 max-h-side overflow-y-auto scrollbar scrollbar-thin scrollbar-thumb-green-900 scrollbar-track-green-400 scrollbar-thumb-rounded;
+   }
+   .btn-entry {
+      @apply w-fit outline-none focus:outline-none border-2 border-transparent hover:bg-green-600 p-2 transition-colors duration-500 ease-in-out rounded bg-green-700 tracking-wider shadow-md text-gray-100;
+   }
+}
+
+@layer components {
+   .errors {
+      @apply border-red-500 focus:border-red-500;
+   }
+}
