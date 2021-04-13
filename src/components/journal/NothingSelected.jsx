@@ -2,14 +2,12 @@ import React from 'react';
 
 export const NothingSelected = () => {
    return (
-      <div className="nothing__main-content">
-         <p>
+      <div className="flex justify-center items-center h-screen">
+         <p className="text-2xl">
             Select something
             <br />
-            pr create an entry!
+            Create an entry!
          </p>
-
-         <i className="">icono</i>
       </div>
    );
 };

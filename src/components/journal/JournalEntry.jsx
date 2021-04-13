@@ -1,26 +1,37 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
+import { activeNote } from '../../actions/notes';
+import { showDates } from '../../helpers/index';
 
-export const JournalEntry = () => {
+export const JournalEntry = props => {
+   const { title, date, body, id, url } = props;
+   const dispatch = useDispatch();
+
+   const initGen = showDates(date);
+
+   const handleEntry = () => {
+      dispatch(activeNote(id, { title, date, body, url }));
+   };
+
    return (
       <div className="h-24 gap-x-5 flex justify-between bg-green-700 pr-5 text-gray-100">
          <div
             className="bg-cover w-1/4"
             style={{
-               backgroundImage:
-                  "url('https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg')",
+               backgroundImage: `url('${url}')`,
             }}
          ></div>
 
-         <div className="text-center w-3/4">
-            <p className="text-xl">Un nuevo día</p>
-            <p className="mt-2">
-               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
+         <div
+            onClick={handleEntry}
+            className="text-center w-3/4 cursor-pointer"
+         >
+            <p className="text-xl">{title}</p>
+            <p className="mt-2">{body}</p>
          </div>
 
          <div className="w-1/4 text-center flex flex-col justify-center">
-            <span>Monday</span>
-            <h4>28</h4>
+            <span className="capitalize">{initGen.next().value}</span>
+            <h4 className="text-4xl">{initGen.next().value}</h4>
          </div>
       </div>
    );

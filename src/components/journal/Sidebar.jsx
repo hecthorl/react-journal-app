@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../actions/auth';
+import { cleaningNotes, startNewNote } from '../../actions/notes';
 import { JournalEntries } from './JournalEntries';
 
 export const Sidebar = () => {
@@ -10,6 +11,11 @@ export const Sidebar = () => {
 
    const handleLogout = () => {
       dispatch(startLogout());
+      dispatch(cleaningNotes());
+   };
+
+   const handleAddNew = () => {
+      dispatch(startNewNote());
    };
 
    return (
@@ -28,7 +34,9 @@ export const Sidebar = () => {
          </div>
 
          <div className="w-full flex justify-center">
-            <button className="btn-entry">New entry</button>
+            <button onClick={handleAddNew} className="btn-entry">
+               New entry
+            </button>
          </div>
 
          <JournalEntries />

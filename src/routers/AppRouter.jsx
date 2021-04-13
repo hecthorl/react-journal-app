@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { startLoadingNotes } from '../actions/notes';
 
 export const AppRouter = () => {
    const dispatch = useDispatch();
@@ -15,10 +16,11 @@ export const AppRouter = () => {
    const [isLogged, setIsLogged] = useState(false);
 
    useEffect(() => {
-      appFirebase.auth().onAuthStateChanged(currentUser => {
+      appFirebase.auth().onAuthStateChanged(async currentUser => {
          if (currentUser) {
             dispatch(login(currentUser.uid, currentUser.displayName));
             setIsLogged(true);
+            dispatch(startLoadingNotes(currentUser.uid));
          } else {
             setIsLogged(false);
          }
